@@ -60,8 +60,8 @@ public class Algorithms {
 		boolean swappedThisRound = false;
 		while(swaps) {
 			swappedThisRound = false;
-			for(int i = 0; i < scores.size(); i++) {
-				if(scores.get(i) <= scores.get(i + 1)) {
+			for(int i = 0; i < scores.size() - 1; i++) {
+				if(scores.get(i) > scores.get(i + 1)) {
 					double save = scores.get(i);
 					scores.set(i, scores.get(i + 1));
 					scores.set(i + 1, save);
@@ -69,9 +69,49 @@ public class Algorithms {
 				}
 			}
 			if(swappedThisRound == false) {
-				swaps = true;
+				swaps = false;
 			}
 		}
 		return scores;
+	}
+	public static List<String> sortDNA(List<String> sequences) {
+		ArrayList<Double> scoresInOrder = new ArrayList<Double>();
+		boolean swaps = true;
+		boolean swappedThisRound = false;
+		while(swaps) {
+			swappedThisRound = false;
+			for(int i = 0; i < sequences.size() - 1; i++) {
+				if(sequences.get(i).length() > sequences.get(i + 1).length()) {
+					String save = sequences.get(i);
+					sequences.set(i, sequences.get(i + 1));
+					sequences.set(i + 1, save);
+					swappedThisRound = true;
+				}
+			}
+			if(swappedThisRound == false) {
+				swaps = false;
+			}
+		}
+		return sequences;
+	}
+	public static List<String> sortWords(List<String> words) {
+		ArrayList<Double> scoresInOrder = new ArrayList<Double>();
+		boolean swaps = true;
+		boolean swappedThisRound = false;
+		while(swaps) {
+			swappedThisRound = false;
+			for(int i = 0; i < words.size() - 1; i++) {
+				if(words.get(i).compareTo(words.get(i+1)) > -1) {
+					String save = words.get(i);
+					words.set(i, words.get(i + 1));
+					words.set(i + 1, save);
+					swappedThisRound = true;
+				}
+			}
+			if(swappedThisRound == false) {
+				swaps = false;
+			}
+		}
+		return words;
 	}
 }
